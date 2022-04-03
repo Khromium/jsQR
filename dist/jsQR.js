@@ -944,7 +944,7 @@ function decode(data, version, formatinfo) {
         bytes: [],
         chunks: [],
         version,
-        mask: formatinfo.datamask,
+        mask: formatinfo.dataMask,
         errorLevel: formatinfo.errorCorrectionLevel,
     };
     while (stream.available() >= 4) {

@@ -183,7 +183,7 @@ export function decode(data: Uint8ClampedArray, version: number, formatinfo: Dic
     bytes: [],
     chunks: [],
     version,
-    mask: formatinfo.datamask,
+    mask: formatinfo.dataMask,
     errorLevel: formatinfo.errorCorrectionLevel,
   };
 
