@@ -52,8 +52,13 @@
       "ts-jest": {
         "tsConfig": {
           "noImplicitAny": false,
-          "lib": ["es2015"],
-          "types": ["jest", "node"]
+          "lib": [
+            "es2015"
+          ],
+          "types": [
+            "jest",
+            "node"
+          ]
         }
       }
     }

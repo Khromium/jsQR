@@ -5,6 +5,8 @@ export interface QRCode {
     data: string;
     chunks: Chunks;
     version: number;
+    mask: number;
+    errorLevel: number;
     location: {
         topRightCorner: Point;
         topLeftCorner: Point;

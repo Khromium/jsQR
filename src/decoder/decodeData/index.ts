@@ -1,4 +1,5 @@
 // tslint:disable:no-bitwise
+import {Dict} from "awesome-typescript-loader/dist/instance";
 import { BitStream } from "./BitStream";
 import { shiftJISTable } from "./shiftJISTable";
 
@@ -24,6 +25,8 @@ export interface DecodedQR {
   bytes: number[];
   chunks: Chunks;
   version: number;
+  mask: number;
+  errorLevel: number;
 }
 
 export enum Mode {
@@ -169,7 +172,7 @@ function decodeKanji(stream: BitStream, size: number) {
   return { bytes, text };
 }
 
-export function decode(data: Uint8ClampedArray, version: number): DecodedQR {
+export function decode(data: Uint8ClampedArray, version: number, formatinfo: Dict<number>): DecodedQR {
   const stream = new BitStream(data);
 
   // There are 3 'sizes' based on the version. 1-9 is small (0), 10-26 is medium (1) and 27-40 is large (2).
@@ -180,6 +183,8 @@ export function decode(data: Uint8ClampedArray, version: number): DecodedQR {
     bytes: [],
     chunks: [],
     version,
+    mask: formatinfo.datamask,
+    errorLevel: formatinfo.errorCorrectionLevel,
   };
 
   while (stream.available() >= 4) {

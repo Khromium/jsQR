@@ -1,3 +1,4 @@
+import { Dict } from "awesome-typescript-loader/dist/instance";
 export interface Chunk {
     type: Mode;
     text: string;
@@ -16,6 +17,8 @@ export interface DecodedQR {
     bytes: number[];
     chunks: Chunks;
     version: number;
+    mask: number;
+    errorLevel: number;
 }
 export declare enum Mode {
     Numeric = "numeric",
@@ -24,4 +27,4 @@ export declare enum Mode {
     Kanji = "kanji",
     ECI = "eci"
 }
-export declare function decode(data: Uint8ClampedArray, version: number): DecodedQR;
+export declare function decode(data: Uint8ClampedArray, version: number, formatinfo: Dict<number>): DecodedQR;

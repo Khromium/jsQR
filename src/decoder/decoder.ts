@@ -318,7 +318,7 @@ function decodeMatrix(matrix: BitMatrix) {
   }
 
   try {
-    return decodeData(resultBytes, version.versionNumber);
+    return decodeData(resultBytes, version.versionNumber, formatInfo);
   } catch {
     return null;
   }
